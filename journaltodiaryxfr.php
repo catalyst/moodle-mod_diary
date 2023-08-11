@@ -233,7 +233,7 @@ echo '<br><br><input class="btn btn-warning"
                      onClick="return clClick()"
                      type="submit" value="'
                      .get_string('transfer', 'diary').'"> '
-                     . html_writer::link($url2, get_string('transfer', 'diary'), ['class' => 'btn btn-secondary', 'role' => 'button', 'style' => 'border-radius: 8px']) .'</input>';
+                     . html_writer::link($url2, get_string('cancel', 'diary'), ['class' => 'btn btn-secondary', 'role' => 'button', 'style' => 'border-radius: 8px']) .'</input>';
 
 // 20211206 Added results so the admin knows what has occured.
 if ($xfrcountck > 0) {
