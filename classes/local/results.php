@@ -35,6 +35,7 @@ use html_writer;
 use context_module;
 use calendar_event;
 use core_tag_tag;
+use moodle_url;
 /**
  * Utility class for Diary results.
  *
@@ -523,9 +524,9 @@ class results {
             echo '<td style="width:35px;">'.get_string('entry', 'diary').':</td><td>';
             echo userdate($entry->timecreated);
             // 20201202 Added link to show all entries for a single user.
-            $url = new moodle_url('mod/diary/reportsingle.php', ['id' => $id, 'user' => $user->id, 'action' => 'allentries']);
-            echo '  <a href="'.$url->out(false).'">'.get_string('reportsingle', 'diary')
-                .'</a></td><td></td>';
+            $url = new moodle_url('/mod/diary/reportsingle.php', ['id' => $id, 'user' => $user->id, 'action' => 'allentries']);
+            echo html_writer::link($url, get_string('reportsingle', 'diary'));
+            echo '</td><td></td>';
             echo '</tr>';
         }
 

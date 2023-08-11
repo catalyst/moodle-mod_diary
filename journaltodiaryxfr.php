@@ -26,6 +26,8 @@
  */
 
 use \mod_diary\event\course_module_viewed;
+use html_writer;
+use moodle_url;
 
 require_once('../../config.php');
 require_once(__DIR__ . '/lib.php');
@@ -161,8 +163,8 @@ echo '<div class="w-75 p-3" style="font-size:1em;
 echo '<form method="POST">';
 
 // 20211105 Setup a url that takes you back to the Diary you came from.
-$url1 = new moodle_url('mod/diary/view.php', ['id' => $id]);
-$url2 = new moodle_url('mod/diary/journaltodiaryxfr.php', ['id' => $cm->id]);
+$url1 = new moodle_url('/mod/diary/view.php', ['id' => $id]);
+$url2 = new moodle_url('/mod/diary/journaltodiaryxfr.php', ['id' => $cm->id]);
 // 20211202 Add some instructions and information to the page.
 echo '<h3 style="text-align:center;"><b>'.get_string('journaltodiaryxfrtitle', 'diary').'</b></h3>';
 echo get_string('journaltodiaryxfrp1', 'diary');
@@ -232,11 +234,8 @@ echo '<br><br><input class="btn btn-warning"
                      name="button1"
                      onClick="return clClick()"
                      type="submit" value="'
-                     .get_string('transfer', 'diary').'"> <a href="'.$url2->out(false).'"
-
-                     class="btn btn-secondary"
-                     style="border-radius: 8px">'
-                     .get_string('cancel', 'diary').'</a></input>';
+                     .get_string('transfer', 'diary').'"> '
+                     . html_writer::link($url2, get_string('cancel', 'diary'), ['class' => 'btn btn-secondary', 'role' => 'button', 'style' => 'border-radius: 8px']) .'</input>';
 
 // 20211206 Added results so the admin knows what has occured.
 if ($xfrcountck > 0) {
@@ -244,10 +243,9 @@ if ($xfrcountck > 0) {
 } else {
     $xfrresults = '';
 }
-echo '<br><br><a href="'.$url1->out(false)
-    .'" class="btn btn-success" style="border-radius: 8px">'
-    .get_string('returnto', 'diary', $diary->name)
-    .'</a> '.$xfrresults;
+
+$link = html_writer::link($url1, get_string('returnto', 'diary', $diary->name), ['class' => 'btn btn-success', 'style' => 'border-radius: 8px']);
+echo '<br><br>'. $link . $xfrresults;
 echo '</form>';
 echo '</div>';
 

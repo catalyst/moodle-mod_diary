@@ -22,6 +22,7 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 use mod_diary\local\results;
+use moodle_url;
 
 require_once("../../config.php");
 require_once("lib.php");
@@ -174,7 +175,7 @@ if (! $users) {
 
     // 20211230 Tacked on an action for the return URL.
     // 20201222 Added a return to report.php button if you do not want to save feedback.
-    $url2 = new moodle_url('mod/diary/report.php', ['id' => $id, 'action' => 'currententry']);
+    $url2 = new moodle_url('/mod/diary/report.php', ['id' => $id, 'action' => 'currententry']);
     $saveallbutton .= ' <a href="'.$url2->out(true)
                      .'" class="btn btn-secondary" role="button" style="border-radius: 8px">'
                      .get_string('returntoreport', 'diary', $diary->name)
