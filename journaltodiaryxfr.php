@@ -26,6 +26,8 @@
  */
 
 use \mod_diary\event\course_module_viewed;
+use html_writer;
+use moodle_url;
 
 require_once('../../config.php');
 require_once(__DIR__ . '/lib.php');

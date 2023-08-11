@@ -24,6 +24,7 @@
 use mod_diary\local\diarystats;
 use mod_diary\local\prompts;
 use mod_diary\local\results;
+use moodle_url;
 // @codingStandardsIgnoreLine
 // use core_text;
 

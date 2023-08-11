@@ -22,6 +22,8 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 use mod_diary\local\results;
+use moodle_url;
+use html_writer;
 
 require_once("../../config.php");
 require_once("lib.php");

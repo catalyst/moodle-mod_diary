@@ -26,6 +26,8 @@ use mod_diary\local\diarystats;
 use mod_diary\local\prompts;
 use \mod_diary\event\invalid_access_attempt;
 use \mod_diary\event\prompt_edited;
+use moodle_url;
+use html_writer;
 
 require_once("../../config.php");
 require_once('lib.php'); // May not need this.
