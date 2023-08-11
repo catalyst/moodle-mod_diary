@@ -357,14 +357,9 @@ $form->display();
 $url1 = new moodle_url('/mod/diary/view.php', ['id' => $id]);
 $url2 = new moodle_url('/mod/diary/prompt_edit.php', ['id' => $cm->id, 'action' => 'create', 'promptid' => 0]);
 // 20220920 Add a Create button and a return button.
-echo '<br><a href="'.$url2->out(false).'"
-    class="btn btn-warning"
-    style="border-radius: 8px">';
-echo get_string('createnewprompt', 'diary').'</a> <a href="'.$url1->out(false)
-    .'" class="btn btn-success" style="border-radius: 8px">'
-    .get_string('returnto', 'diary', $diary->name)
-    .'</a> ';
-
+$link1 = html_writer::link($url2, get_string('createnewprompt', 'diary'), ['class' => 'btn btn-warning', 'style' => 'border-radius: 8px']);
+$link2 = html_writer::link($url1, get_string('returnto', 'diary', $diary->name), ['class' => 'btn btn-success', 'style' => 'border-radius: 8px']);
+echo '<br>' . $link1 . $link2;
 // Trigger prompts viewed event.
 $event = \mod_diary\event\prompts_viewed::create(array(
     'objectid' => $cm->id,

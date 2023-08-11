@@ -320,10 +320,7 @@ if (! $users) {
                       .get_string("saveallfeedback", "diary").'" />';
     // 20200421 Added a return button.
     $url = new moodle_url('/mod/diary/view.php', ['id' => $id]);
-    $saveallbutton .= ' <a href="'.$url->out(false)
-                     .'" class="btn btn-secondary" role="button" style="border-radius: 8px">'
-                     .get_string('returnto', 'diary', $diary->name)
-                     .'</a>';
+    $saveallbutton .= html_writer::link($url, get_string('returnto', 'diary', $diary->name), ['class' => 'btn btn-secondary', 'role' => 'button', 'style' => 'border-radius: 8px']);
 
     $saveallbutton .= '</p>';
 

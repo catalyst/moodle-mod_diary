@@ -232,11 +232,8 @@ echo '<br><br><input class="btn btn-warning"
                      name="button1"
                      onClick="return clClick()"
                      type="submit" value="'
-                     .get_string('transfer', 'diary').'"> <a href="'.$url2->out(false).'"
-
-                     class="btn btn-secondary"
-                     style="border-radius: 8px">'
-                     .get_string('cancel', 'diary').'</a></input>';
+                     .get_string('transfer', 'diary').'"> '
+                     . html_writer::link($url2, get_string('transfer', 'diary'), ['class' => 'btn btn-secondary', 'role' => 'button', 'style' => 'border-radius: 8px']) .'</input>';
 
 // 20211206 Added results so the admin knows what has occured.
 if ($xfrcountck > 0) {
@@ -244,10 +241,9 @@ if ($xfrcountck > 0) {
 } else {
     $xfrresults = '';
 }
-echo '<br><br><a href="'.$url1->out(false)
-    .'" class="btn btn-success" style="border-radius: 8px">'
-    .get_string('returnto', 'diary', $diary->name)
-    .'</a> '.$xfrresults;
+
+$link = html_writer::link($url1, get_string('returnto', 'diary', $diary->name), ['class' => 'btn btn-success', 'style' => 'border-radius: 8px']);
+echo '<br><br>'. $link . $xfrresults;
 echo '</form>';
 echo '</div>';
 

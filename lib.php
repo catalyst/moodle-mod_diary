@@ -664,11 +664,11 @@ function diary_print_overview($courses, &$htmlarray) {
 
         if ($diaryopen) {
             $url = new moodle_url('/mod/diary/view.php', ['id' => $diary->coursemodule]);
+            $link = html_writer::link($url, $diary->name, ['class' => $diary->visible ? '' : 'dimmed']);
             $str = '<div class="diary overview"><div class="name">'
-                .$strdiary.': <a '
-                .($diary->visible ? '' : ' class="dimmed"')
-                .' href="'.$url->out(false).'">'
-                .$diary->name.'</a></div></div>';
+                .$strdiary . $link .'</div></div>';
+
+
 
             if (empty($htmlarray[$diary->course]['diary'])) {
                 $htmlarray[$diary->course]['diary'] = $str;
